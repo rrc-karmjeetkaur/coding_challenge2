@@ -124,3 +124,19 @@ export const getRecommendations = (req: Request, res: Response): void => {
         });
     }
 };
+
+// ✅ New controller for Ticket #4
+export const getAvailableBooksController = (req: Request, res: Response): void => {
+    try {
+        const { books, count } = bookService.getAvailableBooks();
+        res.status(HTTP_STATUS.OK).json({
+            message: "Available books retrieved",
+            data: books,
+            count,
+        });
+    } catch (error) {
+        res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
+            message: "Error retrieving available books",
+        });
+    }
+};

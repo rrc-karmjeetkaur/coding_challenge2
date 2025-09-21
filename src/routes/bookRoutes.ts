@@ -7,13 +7,14 @@ import {
     borrowBook,
     returnBook,
     getRecommendations,
+    getAvailableBooksController, // ✅ new controller
 } from "../controllers/bookController";
 
 const router: Router = Router();
 
-/**
- * Define routes for book management
- */
+// ✅ Available books route
+router.get("/available", getAvailableBooksController);
+
 router.get("/", getAllBooks);
 router.post("/", addBook);
 router.put("/:id", updateBook);
